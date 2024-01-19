@@ -1,4 +1,4 @@
-import { Action, ActionPanel, List, showToast, Toast } from "@raycast/api";
+import { Action, ActionPanel, Icon, List, showToast, Toast } from "@raycast/api";
 import { useEffect, useState } from "react";
 import Parser from "rss-parser";
 import moment from "moment";
@@ -12,7 +12,7 @@ interface State {
 }
 
 function NewsListItem(props: { item: Parser.Item; index: number }) {
-  const icon = '➡️'
+  const icon = Icon.ArrowRightCircleFilled
   const date = getDate(props.item);
 
   return (
@@ -40,9 +40,16 @@ function Actions(props: { item: Parser.Item }) {
             title="Copy Link"
             shortcut={{ modifiers: ["cmd"], key: "." }}
           />
-        )}
+        )}  
       </ActionPanel.Section>
-      
+      <ActionPanel.Section>
+        {<Action.OpenInBrowser 
+          title={"Open Rozetked.me"}
+          url={"https://rozetked.me"} 
+          icon={Icon.ArrowRightCircleFilled}
+          shortcut={{ modifiers: ["cmd"], key: "/" }}
+          />}
+      </ActionPanel.Section>
     </ActionPanel>
   );
 }
