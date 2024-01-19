@@ -12,7 +12,7 @@ interface State {
 }
 
 function NewsListItem(props: { item: Parser.Item; index: number }) {
-  const icon = '📰'
+  const icon = '➡️'
   const date = getDate(props.item);
 
   return (
